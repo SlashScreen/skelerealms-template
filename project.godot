@@ -1,0 +1,55 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="sktemplate"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+SkeleRealmsGlobal="*res://addons/skelerealms/scripts/sk_global.gd"
+CovenSystem="*res://addons/skelerealms/scripts/covens/coven_system.gd"
+GameInfo="*res://addons/skelerealms/scripts/system/game_info.gd"
+SaveSystem="*res://addons/skelerealms/scripts/system/save_system.gd"
+CrimeMaster="*res://addons/skelerealms/scripts/crime/crime_master.gd"
+DialogueHooks="*res://addons/skelerealms/scripts/system/dialogue_hooks.gd"
+DeviceNetwork="*res://addons/skelerealms/scripts/misc/device_network.gd"
+
+[dotnet]
+
+project/assembly_name="sktemplate"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/journalgd/plugin.cfg", "res://addons/network_utility/plugin.cfg", "res://addons/skelerealms/plugin.cfg")
+
+[journalgd]
+
+quests_path="res://quests"
+
+[skelerealms]
+
+actor_fade_distance=100.0
+entity_cleanup_timer=300.0
+granular_navigation_sim_distance=1000.0
+savegame_indents=true
+seconds_per_minute=2.0
+minutes_per_hour=31.0
+hours_per_day=15.0
+days_per_week=8
+weeks_in_month=4
+months_in_year=8
+worlds_path="res://worlds"
+entities_path="res://entities"
+covens_path="res://covens"
+doors_path="res://doors"
+networks_path="res://networks"

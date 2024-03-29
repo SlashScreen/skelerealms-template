@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SKConfig" load_steps=2 format=3 uid="uid://bvbyy8sfogyfk"]
+
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/misc/skconfig.gd" id="1_dgpcq"]
+
+[resource]
+script = ExtResource("1_dgpcq")
+skills = {}
+attributes = {}
+status_effects = Array[Resource("res://addons/skelerealms/scripts/misc/status_effect.gd")]([])
+skill_xp_formula = ""
+character_xp_formula = ""

@@ -1,0 +1,9 @@
+[submodule "addons/skelerealms"]
+	path = addons/skelerealms
+	url = git@github.com:SlashScreen/skelerealms-submodule.git
+[submodule "addons/journal-gd"]
+	path = addons/journal-gd
+	url = https://github.com/SlashScreen/journalgd-submodule
+[submodule "addons/network_utility"]
+	path = addons/network_utility
+	url = https://github.com/SlashScreen/network_utility-submodule

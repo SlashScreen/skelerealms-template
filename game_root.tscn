@@ -1,0 +1,68 @@
+[gd_scene load_steps=17 format=3 uid="uid://q5fb0on3dnf4"]
+
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/entities/entity_manager.gd" id="1_5ggcr"]
+[ext_resource type="Script" path="res://addons/journalgd/QuestNode/quest_engine.gd" id="1_obudx"]
+[ext_resource type="Resource" uid="uid://bvbyy8sfogyfk" path="res://skconfig.tres" id="2_x0imu"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/system/world_loader.gd" id="3_c8vob"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/entities/entity.gd" id="4_kvcms"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/player_component.gd" id="5_bd7kb"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/covens_component.gd" id="6_nd8nd"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/vitals_component.gd" id="7_lw44y"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/attributes_component.gd" id="8_m2aru"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/inventory_component.gd" id="9_h1o8x"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/equipment_component.gd" id="10_mjc3e"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/teleport_component.gd" id="11_wsuqb"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/view_direction_component.gd" id="12_58l3r"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/skills_component.gd" id="13_6nka4"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/damageable_component.gd" id="14_lftjy"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/components/puppet_spawner_component.gd" id="15_sw3at"]
+
+[node name="game_root" type="Node3D"]
+
+[node name="QuestEngine" type="Node" parent="."]
+script = ExtResource("1_obudx")
+
+[node name="EntityManager" type="Node" parent="."]
+script = ExtResource("1_5ggcr")
+config = ExtResource("2_x0imu")
+
+[node name="Player" type="Node" parent="EntityManager"]
+script = ExtResource("4_kvcms")
+
+[node name="PlayerComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("5_bd7kb")
+
+[node name="CovensComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("6_nd8nd")
+
+[node name="VitalsComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("7_lw44y")
+
+[node name="AttributesComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("8_m2aru")
+
+[node name="InventoryComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("9_h1o8x")
+
+[node name="EquipmentComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("10_mjc3e")
+
+[node name="TeleportComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("11_wsuqb")
+
+[node name="ViewDirectionComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("12_58l3r")
+
+[node name="SkillsComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("13_6nka4")
+
+[node name="DamageableComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("14_lftjy")
+
+[node name="PuppetSpawnerComponent" type="Node" parent="EntityManager/Player"]
+script = ExtResource("15_sw3at")
+
+[node name="Replace with player puppet" type="Node3D" parent="EntityManager/Player/PuppetSpawnerComponent"]
+
+[node name="WorldLoader" type="Node" parent="."]
+script = ExtResource("3_c8vob")
