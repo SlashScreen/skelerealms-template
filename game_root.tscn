@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://q5fb0on3dnf4"]
+[gd_scene load_steps=20 format=3 uid="uid://q5fb0on3dnf4"]
 
 [ext_resource type="Script" path="res://addons/skelerealms/scripts/entities/entity_manager.gd" id="1_5ggcr"]
 [ext_resource type="Script" path="res://addons/journalgd/QuestNode/quest_engine.gd" id="1_obudx"]
@@ -16,6 +16,9 @@
 [ext_resource type="Script" path="res://addons/skelerealms/scripts/components/skills_component.gd" id="13_6nka4"]
 [ext_resource type="Script" path="res://addons/skelerealms/scripts/components/damageable_component.gd" id="14_lftjy"]
 [ext_resource type="Script" path="res://addons/skelerealms/scripts/components/puppet_spawner_component.gd" id="15_sw3at"]
+[ext_resource type="PackedScene" uid="uid://cdk6hwb4hi2wc" path="res://scripts/player/player.tscn" id="16_1aqh8"]
+[ext_resource type="PackedScene" uid="uid://d1cidisvmidwe" path="res://worlds/room_1.tscn" id="18_if2ut"]
+[ext_resource type="PackedScene" uid="uid://bdb2jxx1my2bn" path="res://scripts/hud.tscn" id="19_oywnc"]
 
 [node name="game_root" type="Node3D"]
 
@@ -62,7 +65,15 @@ script = ExtResource("14_lftjy")
 [node name="PuppetSpawnerComponent" type="Node" parent="EntityManager/Player"]
 script = ExtResource("15_sw3at")
 
-[node name="Replace with player puppet" type="Node3D" parent="EntityManager/Player/PuppetSpawnerComponent"]
+[node name="Player" parent="EntityManager/Player/PuppetSpawnerComponent" instance=ExtResource("16_1aqh8")]
+unique_name_in_owner = true
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 
 [node name="WorldLoader" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_c8vob")
+
+[node name="room_1" parent="WorldLoader" instance=ExtResource("18_if2ut")]
+
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("19_oywnc")]
+player = NodePath("../EntityManager/Player/PuppetSpawnerComponent/Player")

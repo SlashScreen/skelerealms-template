@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemInstance" load_steps=3 format=3 uid="uid://bm7lx4bhufkm8"]
+
+[ext_resource type="Resource" uid="uid://3qb85nnq5g5x" path="res://assets/data/items/test_item.tres" id="1_0217b"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/instance_data/item_instance.gd" id="2_wp77p"]
+
+[resource]
+script = ExtResource("2_wp77p")
+item_data = ExtResource("1_0217b")
+item_owner = ""
+contained_inventory = ""
+rotation = Quaternion(0, 0, 0, 1)
+quest_item = false
+ref_id = &"test_item_instance"
+world = &"room_1"
+position = Vector3(-3.07837, 0.589182, 3.40647)

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="Network" load_steps=12 format=3 uid="uid://c8ud0qn6di831"]
+
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_point.gd" id="1_rhpab"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_portal.gd" id="2_tuwdk"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_edge.gd" id="3_2ib37"]
+[ext_resource type="Resource" uid="uid://bcy0i3u0gdp8n" path="res://networks/room_1_room_2_edge.tres" id="4_anrit"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network.gd" id="4_ieygb"]
+[ext_resource type="Resource" uid="uid://bpjx4pye7uxhb" path="res://networks/room_2_to_room_1.tres" id="5_d50no"]
+
+[sub_resource type="Resource" id="Resource_wcey1"]
+script = ExtResource("1_rhpab")
+position = Vector3(0.886959, -9.53674e-07, 0.294331)
+
+[sub_resource type="Resource" id="Resource_j6mh7"]
+script = ExtResource("2_tuwdk")
+position = Vector3(-4.30801, -4.76837e-07, -0.156846)
+
+[sub_resource type="Resource" id="Resource_60hno"]
+script = ExtResource("3_2ib37")
+point_a = SubResource("Resource_wcey1")
+point_b = SubResource("Resource_j6mh7")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_my5jx"]
+script = ExtResource("2_tuwdk")
+position = Vector3(-4.296, 2.38419e-07, 0.0764866)
+
+[sub_resource type="Resource" id="Resource_kuq3u"]
+script = ExtResource("3_2ib37")
+point_a = SubResource("Resource_my5jx")
+point_b = SubResource("Resource_wcey1")
+cost = 1.0
+bidirectional = true
+
+[resource]
+script = ExtResource("4_ieygb")
+points = Array[ExtResource("1_rhpab")]([SubResource("Resource_wcey1"), SubResource("Resource_my5jx")])
+edges = Array[ExtResource("3_2ib37")]([SubResource("Resource_60hno"), SubResource("Resource_kuq3u")])
+edge_map = {
+SubResource("Resource_wcey1"): [SubResource("Resource_60hno"), SubResource("Resource_kuq3u")],
+SubResource("Resource_j6mh7"): [SubResource("Resource_60hno")],
+SubResource("Resource_my5jx"): [SubResource("Resource_kuq3u")]
+}
+portals = Array[ExtResource("2_tuwdk")]([ExtResource("5_d50no")])
+portal_edges = Array[Resource("res://addons/network_utility/Scripts/portal_edge.gd")]([ExtResource("4_anrit")])

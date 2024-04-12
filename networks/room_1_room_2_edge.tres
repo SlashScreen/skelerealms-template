@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PortalEdge" load_steps=4 format=3 uid="uid://bcy0i3u0gdp8n"]
+
+[ext_resource type="Resource" uid="uid://c2f2u8re0pbnl" path="res://networks/room_1_to_room_2.tres" id="1_wr7dj"]
+[ext_resource type="Resource" uid="uid://bpjx4pye7uxhb" path="res://networks/room_2_to_room_1.tres" id="2_2w8p5"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/portal_edge.gd" id="3_qp4dv"]
+
+[resource]
+script = ExtResource("3_qp4dv")
+portal_from = ExtResource("1_wr7dj")
+portal_to = ExtResource("2_2w8p5")

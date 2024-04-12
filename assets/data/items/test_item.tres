@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://3qb85nnq5g5x"]
+
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/data/item_data.gd" id="1_0phys"]
+[ext_resource type="PackedScene" uid="uid://cbph67tp6ro6i" path="res://addons/skelerealms/item_template.tscn" id="1_f30qt"]
+
+[resource]
+script = ExtResource("1_0phys")
+prefab = ExtResource("1_f30qt")
+weight = 0.0
+worth = 0
+stackable = false
+tags = Array[StringName]([])
+components = Array[Resource("res://addons/skelerealms/scripts/data/ItemDataComponents/item_data_component.gd")]([])
+id = "test_item"

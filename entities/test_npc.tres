@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="NPCInstance" load_steps=13 format=3 uid="uid://b5dk06w3kahp1"]
+
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/ai/Modules/default_interact_response.gd" id="1_fuf0p"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/ai/Modules/default_crime_report.gd" id="2_2g6ic"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/ai/Modules/default_damage_module.gd" id="3_7pnrc"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/ai/Modules/default_threat_response.gd" id="4_peerq"]
+[ext_resource type="PackedScene" uid="uid://dj6sa6ksct1xi" path="res://addons/skelerealms/npc_template.tscn" id="5_ix4cv"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/data/npc_data.gd" id="6_812eo"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/instance_data/npc_instance.gd" id="7_6oa53"]
+
+[sub_resource type="Resource" id="Resource_jl6du"]
+script = ExtResource("1_fuf0p")
+
+[sub_resource type="Resource" id="Resource_wd8vd"]
+script = ExtResource("2_2g6ic")
+
+[sub_resource type="Resource" id="Resource_gadik"]
+script = ExtResource("3_7pnrc")
+sharp_modifier = 1.0
+piercing_modifier = 1.0
+blunt_modifier = 1.0
+poison_modifier = 1.0
+magic_modifier = 1.0
+light_modifier = 1.0
+frost_modifier = 1.0
+flame_modifier = 1.0
+plant_modifier = 1.0
+stamina_modifier = 1.0
+will_modifier = 1.0
+
+[sub_resource type="Resource" id="Resource_dhce2"]
+script = ExtResource("4_peerq")
+aggression = 2
+attack_threshold = -50
+confidence = 2
+assistance = 1
+assistance_threshold = 0
+friendly_fire_behavior = 1
+warn_radius = 20.0
+attack_radius = 8.0
+
+[sub_resource type="Resource" id="Resource_3bed8"]
+script = ExtResource("6_812eo")
+prefab = ExtResource("5_ix4cv")
+schedule = Array[Resource("res://addons/skelerealms/scripts/schedules/schedule_event.gd")]([])
+covens = Array[Resource("res://addons/skelerealms/scripts/covens/coven_rank_data.gd")]([])
+default_player_opinion = 0
+loyalty = 0
+essential = true
+ghost = false
+invulnerable = false
+unique = true
+affects_stealth_meter = true
+interactive = true
+relationships = Array[Resource("res://addons/skelerealms/scripts/relationships/relationship.gd")]([])
+modules = Array[Resource("res://addons/skelerealms/scripts/ai/ai_module.gd")]([SubResource("Resource_jl6du"), SubResource("Resource_wd8vd"), SubResource("Resource_gadik"), SubResource("Resource_dhce2")])
+goap_actions = Array[Resource("res://addons/skelerealms/scripts/ai/goap_behavior.gd")]([])
+id = "test_npc"
+
+[resource]
+script = ExtResource("7_6oa53")
+npc_data = SubResource("Resource_3bed8")
+unique_items = Array[Resource("res://addons/skelerealms/scripts/instance_data/item_instance.gd")]([])
+ref_id = &"test_npc"
+world = &"room_2"
+position = Vector3(3.54688, 0, -3.17418)

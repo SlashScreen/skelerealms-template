@@ -7,5 +7,5 @@ script = ExtResource("1_dgpcq")
 skills = {}
 attributes = {}
 status_effects = Array[Resource("res://addons/skelerealms/scripts/misc/status_effect.gd")]([])
-skill_xp_formula = ""
-character_xp_formula = ""
+skill_xp_formula = "return 0"
+character_xp_formula = "return 0"

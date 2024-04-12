@@ -1,0 +1,88 @@
+[gd_scene load_steps=18 format=3 uid="uid://d1cidisvmidwe"]
+
+[ext_resource type="Texture2D" uid="uid://br7chu3b1hk7y" path="res://assets/textures/prototype/Orange/texture_01.png" id="1_281bx"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/world_objects/world_item.gd" id="2_i132t"]
+[ext_resource type="Resource" uid="uid://bm7lx4bhufkm8" path="res://entities/test_item_instance.tres" id="3_vmif8"]
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/world_objects/door.gd" id="4_fx4r5"]
+[ext_resource type="Resource" uid="uid://drv4xnguc4oed" path="res://doors/room_1_to_room_2.tres" id="5_ha3f0"]
+[ext_resource type="Resource" uid="uid://djfknmwmw83m6" path="res://doors/room_2_to_room_1.tres" id="6_pkg3e"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_instance.gd" id="7_ypk1w"]
+[ext_resource type="Resource" uid="uid://bj8wlu5fh2d2" path="res://networks/room_1.tres" id="8_nn5vb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xwwsl"]
+
+[sub_resource type="Sky" id="Sky_a10kb"]
+sky_material = SubResource("ProceduralSkyMaterial_xwwsl")
+
+[sub_resource type="Environment" id="Environment_m0vpt"]
+background_mode = 2
+sky = SubResource("Sky_a10kb")
+
+[sub_resource type="BoxMesh" id="BoxMesh_w3xyj"]
+size = Vector3(0.2, 2, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_taovx"]
+data = PackedVector3Array(-0.1, 1, 0.5, 0.1, 1, 0.5, -0.1, -1, 0.5, 0.1, 1, 0.5, 0.1, -1, 0.5, -0.1, -1, 0.5, 0.1, 1, -0.5, -0.1, 1, -0.5, 0.1, -1, -0.5, -0.1, 1, -0.5, -0.1, -1, -0.5, 0.1, -1, -0.5, 0.1, 1, 0.5, 0.1, 1, -0.5, 0.1, -1, 0.5, 0.1, 1, -0.5, 0.1, -1, -0.5, 0.1, -1, 0.5, -0.1, 1, -0.5, -0.1, 1, 0.5, -0.1, -1, -0.5, -0.1, 1, 0.5, -0.1, -1, 0.5, -0.1, -1, -0.5, 0.1, 1, 0.5, -0.1, 1, 0.5, 0.1, 1, -0.5, -0.1, 1, 0.5, -0.1, 1, -0.5, 0.1, 1, -0.5, -0.1, -1, 0.5, 0.1, -1, 0.5, -0.1, -1, -0.5, 0.1, -1, 0.5, 0.1, -1, -0.5, -0.1, -1, -0.5)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_kebp5"]
+vertices = PackedVector3Array(-4.5, 0.5, -4.5, -4.5, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ykgog"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qj4pw"]
+albedo_texture = ExtResource("1_281bx")
+uv1_triplanar = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wc4tu"]
+data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0, -5)
+
+[node name="room_1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m0vpt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.368855, 0.929487, 0, -0.929487, 0.368855, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Items" type="Node3D" parent="."]
+
+[node name="TestItem" type="Node3D" parent="Items"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07837, 0.589182, 3.40647)
+script = ExtResource("2_i132t")
+instance = ExtResource("3_vmif8")
+
+[node name="Door" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+script = ExtResource("4_fx4r5")
+instance = ExtResource("5_ha3f0")
+destination_instance = ExtResource("6_pkg3e")
+interact_verb = "OPEN"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1, 0)
+mesh = SubResource("BoxMesh_w3xyj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_taovx")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_kebp5")
+
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D"]
+mesh = SubResource("PlaneMesh_ykgog")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qj4pw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wc4tu")
+
+[node name="NetworkInstance" type="Node3D" parent="."]
+script = ExtResource("7_ypk1w")
+network = ExtResource("8_nn5vb")

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="NetworkPortal" load_steps=2 format=3 uid="uid://c2f2u8re0pbnl"]
+
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_portal.gd" id="1_qia0k"]
+
+[resource]
+script = ExtResource("1_qia0k")
+position = Vector3(-4.30801, -4.76837e-07, -0.156846)
