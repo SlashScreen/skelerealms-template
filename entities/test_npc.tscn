@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gvsvy1iwl5yi"]
+
+[ext_resource type="PackedScene" uid="uid://dade7o6bx8ja0" path="res://addons/skelerealms/npc_entity_template.tscn" id="1_386s3"]
+[ext_resource type="PackedScene" uid="uid://dj6sa6ksct1xi" path="res://addons/skelerealms/npc_template.tscn" id="2_wrvdu"]
+
+[node name="test_npc" instance=ExtResource("1_386s3")]
+form_id = &"test_npc"
+
+[node name="CharacterBody3D" parent="PuppetSpawnerComponent" index="0" instance=ExtResource("2_wrvdu")]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjjidckfc7ox3"]
+
+[ext_resource type="PackedScene" uid="uid://bt1x4w2k7dhvf" path="res://addons/skelerealms/item_entity_template.tscn" id="1_dn427"]
+[ext_resource type="PackedScene" uid="uid://cbph67tp6ro6i" path="res://addons/skelerealms/item_template.tscn" id="2_qip85"]
+
+[node name="test_item_entity" instance=ExtResource("1_dn427")]
+form_id = &"test_item_entity"
+
+[node name="Item" parent="PuppetSpawnerComponent" index="0" instance=ExtResource("2_qip85")]

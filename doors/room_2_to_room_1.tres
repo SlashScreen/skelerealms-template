@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DoorInstance" load_steps=2 format=3 uid="uid://djfknmwmw83m6"]
+
+[ext_resource type="Script" path="res://addons/skelerealms/scripts/instance_data/door_instance.gd" id="1_vfdw2"]
+
+[resource]
+script = ExtResource("1_vfdw2")
+ref_id = &"room_2_to_room_1"
+world = &"room_2"
+position = Vector3(-4, 0, 0)
